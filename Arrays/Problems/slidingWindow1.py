@@ -10,13 +10,16 @@ def maxSumFixWindow(nums,k):
     sum = 0
     while j < n:
         sum += nums[j]
-        if j-i+1 < k:
+
+        if j < i + k - 1:
             j += 1
+
         else:
             maxSum = max(sum,maxSum)
             sum -= nums[i]
             i += 1
             j += 1
+            
     return maxSum
 
 nums = np.fromstring(input("Enter array elements: "),sep=' ',dtype=np.int32)

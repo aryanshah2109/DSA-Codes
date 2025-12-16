@@ -14,6 +14,6 @@ k = int(input("Enter number of steps: "))
 if k>n:
     k %= n
 arr = reverse(arr,0,n-1)
-arr = reverse(arr,0,k-1)
-arr = reverse(arr,k,n-1)
+arr = reverse(arr,0,k)
+arr = reverse(arr,k+1,n-1)
 print(arr)
