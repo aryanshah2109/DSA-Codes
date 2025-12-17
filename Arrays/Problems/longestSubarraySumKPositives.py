@@ -1,3 +1,5 @@
+# Only positives in array
+
 def longestSubarrayBrute(arr,k):
     # O(n3) TC 
     # O(1) SC
@@ -29,28 +31,35 @@ def longestSubarrayBetter(arr,k):
                 
     return maxLen
 
+
 def longestSubarrayOptimal(arr,k):
-    # O(2n) TC
-    # O(1) SC
+    # TC = O(2n) :
+    # 2n even though 2 loops as i and j are moving independant of each other and i doesnt reset for any j
     
+    # SC = O(1)
     n = len(arr)
+
     i = 0
     j = 0
-    sum = arr[0]
-    maxLen = 0
+    local_sum = 0
+    max_window_size = 0
 
-    while j<n:
-        while sum > k:
-            sum -= arr[i]
-            i += 1
-        if sum == k:
-            maxLen = max(maxLen, j-i+1)
-        j += 1
+    while j < n:
+        local_sum += arr[j]
+
+        if local_sum > k:
+
+            while local_sum > k:
+                
+                local_sum -= arr[i]
+                i += 1
+
+        if local_sum == k:
+            max_window_size = max(j-i+1, max_window_size)
         
-        if j < n:
-            sum += arr[j]
-    
-    return maxLen
+        j += 1
+
+    return max_window_size
 
 arr = [1,2,3,1,1,1,1,4,2,3]
 k = int(input("Enter k: "))
@@ -62,4 +71,7 @@ maxLen = longestSubarrayBetter(arr,k)
 print(maxLen)
 
 maxLen = longestSubarrayOptimal(arr,k)
+print(maxLen)
+
+maxLen = optimal(arr,k)
 print(maxLen)
