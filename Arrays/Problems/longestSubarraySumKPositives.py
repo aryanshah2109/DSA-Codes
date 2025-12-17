@@ -72,6 +72,3 @@ print(maxLen)
 
 maxLen = longestSubarrayOptimal(arr,k)
 print(maxLen)
-
-maxLen = optimal(arr,k)
-print(maxLen)
