@@ -1,4 +1,5 @@
 # Calculate number of subarrays of size k with given sum x
+
 import numpy as np
 
 def brute(arr, k, sum):
@@ -15,8 +16,8 @@ def brute(arr, k, sum):
             count += 1
     return count
 
-def optimal(arr, k, sum):
-    
+def slidingWindow(arr, k, sum):
+        
     n = len(arr)
 
     i = 0
@@ -47,4 +48,4 @@ k = int(input("Enter subarray size: "))
 sum = int(input("Enter sum: "))
 
 print(f'Counts of sum {sum} : {brute(arr,k,sum)}')
-print(f'Counts of sum {sum} : {optimal(arr,k,sum)}')
+print(f'Counts of sum {sum} : {slidingWindow(arr,k,sum)}')
