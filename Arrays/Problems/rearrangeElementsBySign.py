@@ -37,19 +37,27 @@ def optimal(nums):
     positive_idx = 0
     negative_idx = 1
     
-    renumsanged_elements = []
+    numsRearranged_elements = []
 
     for i in range(n):
         
-        if nums[i] > 0:
-            renumsanged_elements.insert(positive_idx, nums[i])
-            positive_idx += 2
+        # if nums[i] > 0:
+        #     numsRearranged_elements.insert(positive_idx, nums[i])
+        #     positive_idx += 2
         
+        # else:
+        #     numsRearranged_elements.insert(negative_idx, nums[i])
+        #     negative_idx += 2
+
+        if i%2==0:
+            numsRearranged_elements.insert(positive_idx, nums[positive_idx])
+            positive_idx += 2
         else:
-            renumsanged_elements.insert(negative_idx, nums[i])
+            numsRearranged_elements.insert(negative_idx, nums[negative_idx])
             negative_idx += 2
 
-    return renumsanged_elements
+
+    return numsRearranged_elements
 
 
 nums = np.fromstring(input("Enter numsay elements: "), sep = " ", dtype=np.int32)

@@ -1,4 +1,5 @@
 # Return number of subarrays with sum k
+# Prefix sum
 
 def numSubarrayBrute(nums,k):
     count = 0
