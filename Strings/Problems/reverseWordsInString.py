@@ -17,6 +17,7 @@ def reverse_str(s):
 
     return rev
 
+# TC = O(n) SC = O(n)
 def approach2(s: str):
     
     s = s.strip()
