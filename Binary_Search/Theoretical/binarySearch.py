@@ -1,3 +1,5 @@
+# TC = O(logn)
+
 import numpy as np
 
 def iterativeBinarySearch(arr:int,key):
@@ -5,7 +7,7 @@ def iterativeBinarySearch(arr:int,key):
     high = len(arr) -1
 
     while(low<=high):
-        mid = int((low+high)/2)
+        mid = low + int((high-low)/2)
         if(arr[mid] == key):
             return mid
         elif(arr[mid]>key):
@@ -16,7 +18,7 @@ def iterativeBinarySearch(arr:int,key):
 
 def recursiveBinarySearch(arr,low,high,key):
     if(low <= high):
-        mid = int((low+high)/2)
+        mid = low + int((high-low)/2)
         if(arr[mid]==key):
             return mid
         elif(arr[mid]>key):
