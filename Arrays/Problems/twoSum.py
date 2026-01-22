@@ -21,7 +21,21 @@ def twoSumBetter(arr,k):
             return j,i
         else:
             hashmap.update({arr[i]:i})
-    
+
+def twoSumOptimal(arr, k):
+    ### USE ONLY IF ARRAY IS SORTED. IF NOT THIS IS NOT OPTIMAL AS YOU HAVE TO SORT THE ARRAY FIRST
+    # tc = O(n)
+    # sc = O(1)
+    left = 0
+    right = n-1
+    while left < right:
+        if arr[left] + arr[right] == target:
+            return [left, right]
+        elif arr[left] + arr[right] < target:
+            left += 1
+        else:
+            right -= 1
+
 
 
 arr = np.array([])
@@ -30,9 +44,14 @@ arr = np.fromstring(input("Enter array elements: "),sep=' ',dtype=int)
 
 target = int(input("Enter target: "))
 
+print("Brute solution")
 indices = twoSumBrute(arr,target)
 print(indices)
 
 print("Better solution")
 indicesBetter = twoSumBetter(arr,target)
 print(indicesBetter)
+
+print("Optimal solution")
+indicesOptimal = twoSumOptimal(arr,target)
+print(indicesOptimal)
