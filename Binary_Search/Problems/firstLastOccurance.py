@@ -8,19 +8,18 @@ import numpy as np
 # that is the first index. then continue checking and if found another element keep changing last
 
 # TC = O(n)
-def approach1(arr, x):
-    n = len(arr)
+def approach1(nums, target):
 
+    n = len(nums)
     first = -1
     last = -1
-
     for i in range(n):
-        if arr[i] == x and first == -1:
-            first = i
-        elif arr[i] == x:
+        if nums[i] == target:
+            if first == -1:
+                first = i
             last = i
-
-    return first,last
+            
+    return [first, last]
 
 # Find lower bounds and upper bounds of that x
 # first = arr[lower_bound] and last = arr[upper_bound - 1]
