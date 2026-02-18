@@ -26,39 +26,35 @@ def approach1(nums, target):
 # also if x is not present, we have to handle that case too
 def approach2(arr, x):
     n = len(arr)
-
+    ## Optimal
+    ## TC = O(logn) SC = O(1)
     first = n
-    last = n
-
     low = 0
     high = n-1
-
-    # lower bound
     while low <= high:
-        mid = low + int((high-low)/2)
-        if arr[mid] >= x:
-            high = mid - 1
+        mid = low + (high-low) // 2
+        if nums[mid] >= target:
             first = mid
+            high = mid - 1
         else:
             low = mid + 1
     
+    # If target not found
+    if first == n or nums[first] != target:
+        return [-1, -1]
+
+    last = n
     low = 0
     high = n-1
-
-    # upper bound
     while low <= high:
-        mid = low + int((high-low)/2)
-        if arr[mid] <= x:
-            low = mid + 1
+        mid = low + (high-low) // 2
+        if nums[mid] > target:
             last = mid
-        else:
             high = mid - 1
+        else:
+            low = mid + 1
 
-    if first == n or arr[first] != x:
-        first = -1
-        last = -1
-
-    return first, last
+    return [first, last-1]
 
 
 
