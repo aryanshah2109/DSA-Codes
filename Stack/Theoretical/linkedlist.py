@@ -1,140 +1,52 @@
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
+## Advantage: No need to pass max size like arrays
+## How to run? from root, python -m Stack.Theoretical.linkedlist
 
-class LinkedList:
-    def __init__(self):
-        self.head = None
-
-    def insert_start(self, data):
-        node = Node(data)
-
-        if self.head is None:
-            self.head = node
-            return
-
-        node.next = self.head
-        self.head = node
-
-    def insert_end(self, data):
-        node = Node(data)
-
-        if self.head is None:
-            self.insert_start(data)
-            return
-        
-        curr = self.head
-        while curr.next:
-            curr = curr.next
-        
-        curr.next = node
-
-    def delete_start(self):
-        if self.head is None:
-            raise ValueError("Cannot delete from empty Linked List")
-
-        curr = self.head
-        data = curr.data
-        self.head = curr.next
-        curr.next = None
-        print(data)
-
-
-    def delete_end(self):
-        if self.head is  None:
-            raise ValueError("Cannot delete from an empty Linked List")
-        
-        curr = self.head
-        while curr.next.next:
-            curr = curr.next
-        
-        data = curr.next.data
-        curr.next = None
-        print(data)
-
-    def print_ll(self):
-        if self.head is None:
-            raise ValueError("Empty Linked List.")
-        
-        curr = self.head
-
-        while curr:
-            print(f"{curr.data} -> ", end=" ")
-            curr = curr.next
+from Linked_Lists.Theoretical.singly import LinkedList, Node
 
 class Stack:
-    MAX_SIZE = 10
     def __init__(self):
-        self.top = -1
-        self.linked = LinkedList()
+        self.stack = LinkedList()
 
-    def push(self, data):
-        if self.top == Stack.MAX_SIZE - 1:
-            raise ValueError("Stack Overflow.")
-        
-        self.top += 1
-        self.linked.insert_start(data)
+    def push(self, element: int):
+        new_node = Node(element)
+        new_node.next = self.stack.head
+        self.stack.head = new_node
 
     def pop(self):
-        if self.top == -1:
-            raise ValueError("Stack Underflow. Cannot pop from empty stack")
-        
-        print("Popped element: ", end=" ")
-        self.linked.delete_start()
-        
+        if self.stack.head is None:
+            return
+        data = self.stack.head.data
+        self.stack.head = self.stack.head.next
+        return data
     
     def display(self):
-        if self.top == -1:
-            raise ValueError("Stack Underflow. No elements to display")
-        
-        self.linked.print_ll()
+        if self.stack.head is None:
+            return
+        temp = self.stack.head
+        print("\nStack:")
+        while temp:
+            print(temp.data)
+            temp = temp.next
 
-    def top_element(self):
-        if self.top == -1:
-            raise ValueError("Stack Underflow. No top element in stack")
+    def top(self):
+        if self.stack.head is None:
+            return
+        return self.stack.head.data
     
-        return self.linked.head.data
+s = Stack()
 
+for i in range(1, 11):
+    s.push(i)
 
-st = Stack()
+s.display()
 
-try:
-    # st.pop()
-    # st.top_element()
-    # st.display()
+print("\n")
 
-    st.push(1)
-    st.push(2)
-    st.push(3)
-    st.push(4)
-    st.push(5)
-    st.push(10)
-    st.push(15)
-    st.push(20)
-    st.push(25)
-    st.push(30)
-    # st.push(35)
-    # st.push(40)
+print("Popping elements: \n")
+for i in range(3):
+    print(s.pop())
 
-    st.display()
+s.display()
 
-    print("\nDeleting elements: ")
-    st.pop()
-    st.pop()
-    print("")
-    st.display()
-
-
-    print(f"\nTop element: {st.top_element()}")
-    
-
-
-
-except Exception as e:
-    print(e)
-    
-        
-        
-        
-
+print("\nTop element: ")
+print(s.top())
