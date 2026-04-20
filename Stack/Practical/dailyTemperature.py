@@ -4,24 +4,35 @@ class Solution(object):
         :type temperatures: List[int]
         :rtype: List[int]
         """
-        ## TC = O(n) SC = O(n)
         
-        # Basically calculate next greatest element
         n = len(temperatures)
 
-        next_warmer_temp = [0] * n
-        stack = []
+        ## Brute
+        ## TC = O(n2) SC = O(n)
+        # answer = []
+        # for i in range(n):
+        #     hasHigher = False
+        #     for j in range(i+1,n):
+        #         if temperatures[i] < temperatures[j]:
+        #             answer.append(j-i)
+        #             hasHigher = True
+        #             break
+        #     if not hasHigher:
+        #         answer.append(0)
+        # return answer
 
-        for i in range(n-1, -1, -1):
-            # pop out temperatures which are smaller or equal than current temp
+        ## Optimal
+        ## TC = O(n) SC = O(2n)
+        ## Basically, find the next greatest element. if doesnt exist, give 0
+        nge = [0] * n
+        stack = []
+        for i in range(n-1, -1 ,-1):
             while len(stack) != 0 and temperatures[stack[-1]] <= temperatures[i]:
                 stack.pop(-1)
-
-            # If any element remains in stack, top element is your next greatest for current
             if len(stack) != 0:
-                next_warmer_temp[i] = stack[-1] - i
-            
-            # append indices of next greatest in stack
+                nge[i] = stack[-1] - i
             stack.append(i)
+        return nge
+            
 
-        return next_warmer_temp
+        
