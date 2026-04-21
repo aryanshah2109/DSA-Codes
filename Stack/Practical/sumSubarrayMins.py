@@ -5,53 +5,56 @@ class Solution(object):
         :rtype: int
         """
         n = len(arr)
-        mod_val = int(1e9 + 7)
-
+        mod = 10**9 + 7
+        
         ## Brute
         ## TC = O(n2) SC = O(1)
-        # minimum = float("inf")
-        # total_sum = 0
-    
+        # total = 0
         # for i in range(n):
-        #     minimum = arr[i]
+        #     minimal = arr[i]
         #     for j in range(i, n):
-        #         minimum = min(minimum, arr[j])
-        #         total_sum = (total_sum + minimum) % mod_val 
-        # return total_sum
+        #         minimal = min(minimal, arr[j])
+        #         total = (total + minimal) % mod
+        # return int(total)
+                    
 
-        
         ## Optimal
-        
+        ## TC = O(n + n + n) ~ O(n)
+        ## SC = O(3n) ~ O(n)
 
-        # previous smaller element
-        pse = []
+        ## Find pse and nse for all elements. Find individual contribution and add them
+
+        # Find pse
+        pse = [-1] * n
         stack = []
+    
         for i in range(n):
             while len(stack) != 0 and arr[stack[-1]] > arr[i]:
                 stack.pop(-1)
-            if len(stack) == 0:
-                pse.append(-1)
-            else:
-                pse.append(stack[-1])
+            if len(stack) != 0:
+                pse[i] = stack[-1]
             stack.append(i)
         
-        # next smallest element
+        # Find nse
         nse = [n] * n
         stack = []
+    
         for i in range(n-1, -1, -1):
             while len(stack) != 0 and arr[stack[-1]] >= arr[i]:
                 stack.pop(-1)
-    
             if len(stack) != 0:
                 nse[i] = stack[-1]
-    
             stack.append(i)
-
+        
+        # find contributions
         total = 0
-
         for i in range(n):
             left = i - pse[i]
             right = nse[i] - i
-            total = (total + (left * right * arr[i]) %  mod_val) % mod_val
+            individual_contribution = left * right * arr[i]
+            total = (total + individual_contribution) % mod
         
         return total
+
+
+        
