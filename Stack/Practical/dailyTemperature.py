@@ -23,7 +23,9 @@ class Solution(object):
 
         ## Optimal
         ## TC = O(n) SC = O(2n)
+        
         ## Basically, find the next greatest element. if doesnt exist, give 0
+
         nge = [0] * n
         stack = []
         for i in range(n-1, -1 ,-1):

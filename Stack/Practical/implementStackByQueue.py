@@ -25,6 +25,7 @@ class MyStack(object):
         """
         :rtype: int
         """
+        
         return self.queue1.pop(0)
 
 
@@ -32,6 +33,7 @@ class MyStack(object):
         """
         :rtype: int
         """
+
         return self.queue1[0]
         
 
@@ -39,6 +41,7 @@ class MyStack(object):
         """
         :rtype: bool
         """
+
         return len(self.queue1) == 0
         
 

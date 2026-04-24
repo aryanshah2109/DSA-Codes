@@ -26,6 +26,7 @@ class Solution(object):
                 stack.append(int(operation))
 
         score_sum = 0
+        
         for i in range(len(stack)):
             score_sum += stack[i]
 
