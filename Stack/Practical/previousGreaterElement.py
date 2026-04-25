@@ -21,6 +21,7 @@ print(pge)
         
 ## Optimal
 ## TC = O(n) SC = O(2n)
+
 nums = [6, 1, 5, 2, 8, 9, 3]
 n = len(nums)
 pge = [-1] * n

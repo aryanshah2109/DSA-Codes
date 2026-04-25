@@ -27,6 +27,7 @@ print(nse)
 
 ## Optimal
 # TC = O(n) SC = O(1)
+
 arr = [6, 1, 5, 2, 8, 9, 3]
 n = len(arr)
 

@@ -5,6 +5,7 @@ class Solution(object):
         :type k: int
         :rtype: List[int]
         """
+        
         n = len(nums)
 
         ## Brute

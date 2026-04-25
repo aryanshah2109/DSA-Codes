@@ -13,16 +13,18 @@ class Solution:
         #             return True        
         # return False
 
-
         ## Optimal
         ## TC = O(n) SC = O(n)
         hashmap = {0 : -1}
         current_sum = 0
+
         for i,x in enumerate(nums):
             current_sum += x
             remainder = current_sum % k
             if remainder not in hashmap:
                 hashmap[remainder] = i
+
             elif i - hashmap[remainder] >= 2:
                 return True
         return False
+    
