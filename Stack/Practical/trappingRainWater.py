@@ -11,6 +11,7 @@ class Solution(object):
         return prefix
     
     def getSuffixMax(self, height):
+
         n = len(height)
         suffix = [0] * n
         suffix[n-1] = height[n-1]
@@ -61,6 +62,7 @@ class Solution(object):
             if leftMax < rightMax:
                 total += leftMax - height[left]
                 left += 1
+                
             else:
                 total += rightMax - height[right]
                 right -= 1
