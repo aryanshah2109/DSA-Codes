@@ -13,6 +13,7 @@ class Solution(object):
         for i in range(n):
 
             if asteroids[i] > 0:
+                
                 stack.append(asteroids[i])
                 continue
 

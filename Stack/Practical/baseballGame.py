@@ -11,6 +11,7 @@ class Solution(object):
         for operation in operations:
 
             if operation == "+":
+                
                 top_element = stack[-1]
                 second_top_element = stack[-2]
 
