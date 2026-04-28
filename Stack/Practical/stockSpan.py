@@ -39,6 +39,7 @@ class StockSpanner(object):
             
         if len(self.stack) == 0:
             span = self.current_index_num_elements + 1
+            
         else:
             span = self.current_index_num_elements - self.stack[-1][1]
 

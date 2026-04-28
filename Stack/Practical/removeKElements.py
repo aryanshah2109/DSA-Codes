@@ -1,5 +1,6 @@
 class Solution(object):
     def removeKdigits(self, num, k):
+        
         ## TC = O(3n) + O(k) SC = O(n) + O(n)
 
         stack = []
