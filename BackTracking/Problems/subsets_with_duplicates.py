@@ -1,5 +1,6 @@
 class Solution(object):
     def getAllSubsets(self, nums, answer, curr_subset, idx):
+
         if idx == len(nums):
             answer.append(curr_subset[:])
             return
@@ -15,6 +16,7 @@ class Solution(object):
 
         # directly go to next unique element and skip all recurring duplicates
         i = idx + 1
+        
         while i < len(nums) and nums[i] == nums[i-1]:
             i += 1
 

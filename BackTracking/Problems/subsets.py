@@ -1,5 +1,6 @@
 class Solution(object):
     def getSubsets(self, nums, answer, curr_subset, idx, n):
+        
         if idx == n:
             answer.append(curr_subset[:])
             return
