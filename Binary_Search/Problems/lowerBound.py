@@ -8,6 +8,7 @@ import numpy as np
 
 # TC = O(logn)
 def lowerBound(arr, target):
+    
     low = 0
     high = len(arr) - 1
     ans = len(arr)

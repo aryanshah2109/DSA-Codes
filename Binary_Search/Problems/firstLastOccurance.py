@@ -13,6 +13,7 @@ def approach1(nums, target):
     n = len(nums)
     first = -1
     last = -1
+
     for i in range(n):
         if nums[i] == target:
             if first == -1:
@@ -24,8 +25,8 @@ def approach1(nums, target):
 # Find lower bounds and upper bounds of that x
 # first = arr[lower_bound] and last = arr[upper_bound - 1]
 # also if x is not present, we have to handle that case too
-def approach2(arr, x):
-    n = len(arr)
+def approach2(nums, target):
+    n = len(nums)
     ## Optimal
     ## TC = O(logn) SC = O(1)
     first = n
