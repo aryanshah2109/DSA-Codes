@@ -1,25 +1,33 @@
-# Check if a strings is a palindrome or not
-# a string is palindrome if they are same from left to right and right to left
-# eg: abcba is a valid palindrome as reverse of abcba is same as input string abcba
-# The string contain non-alphanumerical characters like _, space, special symbols, etc.
-# So remove those non-alphanumerical characters and then handle palindrome nature
+class Solution(object):
+    def reverseString(self, string):
+        rev = ""
+        for char in string:
+            rev = char + rev
 
-def checkPalindrome(input_string):
+        return rev
 
-    alpha_string = "".join([char for char in input_string if char.isalnum()]).lower()
 
-    reversed_string = ""
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        string_list = [char for char in s if char.isalnum()]
+        string = "".join(string_list)
+        string = string.lower()
 
-    for char in alpha_string:
-        reversed_string = char + reversed_string
+        ## Brute
+        ## TC = O(n) SC = O(n)
+        # reverse = self.reverseString(string)
+        # return reverse == string
 
-    return reversed_string == alpha_string
-        
-    
-input_string = input("Enter string: ")
-
-if checkPalindrome(input_string):
-    print(f"Given string is a Valid Palindrome")
-
-else:
-    print(f"Given string is not a Valid Palindrome")
+        ## Optimal
+        ## TC = O(n) SC = O(1)
+        left = 0
+        right = len(string) - 1
+        while left < right:
+            if string[left] != string[right]:
+                return False
+            left += 1
+            right -= 1
+        return True
