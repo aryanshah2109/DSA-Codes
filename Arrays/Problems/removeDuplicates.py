@@ -1,36 +1,27 @@
-import numpy as np
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        n = len(nums)
 
-def removeDuplicatesBrute(arr):
-    arr2 = []
+        ## Brute:
+        ## TC = O(n2) SC = O(n)
 
-    for i in arr:
-        if(i not in arr2):
-            arr2.append(i)
-    return arr2
+        # answer = []
+        # for i in range(n):
+        #     if nums[i] not in answer:
+        #         answer.append(nums[i])
+        
+        # for i in range(len(answer)):
+        #     nums[i] = answer[i]
+        # return len(answer)
 
+        ## Optimal
+        ## TC = O(n) SC = O(1)
 
-def removeDuplicatesDictionary(arr):
-    temp = {}
-
-    for i in range(0,len(arr)):
-        if arr[i] not in temp.keys():
-            temp.update({arr[i]:0})
-    
-    return list(temp.keys())
-
-def removeDuplicatesSet(arr):
-    return list(set(arr))
-
-arr = np.array([])
-n = int(input("Enter size: "))
-arr = np.fromstring(input("Enter array elements: "),sep=' ',dtype=int)
-
-
-arr2 = removeDuplicatesBrute(arr)
-print(arr2)
-
-arr3 = removeDuplicatesSet(arr)
-print(arr3)
-
-uniqueElements = removeDuplicatesDictionary(arr)
-print(uniqueElements)
+        left = 0
+        right = 1
+        while right < n:
+            if nums[left] != nums[right]:
+                left += 1
+                nums[left] = nums[right]
+            right += 1
+        return left + 1
