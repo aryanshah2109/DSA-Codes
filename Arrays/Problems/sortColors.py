@@ -41,7 +41,7 @@ class Solution:
         # return nums
 
         ## Optimal
-        ## TC = O() SC = O()
+        ## TC = O(n) SC = O(1)
         ### DUTCH FLAG ALGORITHM
         low = 0
         mid = 0
